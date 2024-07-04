@@ -39,3 +39,14 @@ class AlwaysDefects(Strategy):  # aptly named
     def strategy(self, opponent: bool):
         return False
 
+
+class NoForgiveness(Strategy):  # always cooperates until opponent defects; then always defects
+
+    def __init__(self, name):
+        Strategy.__init__(self, name)
+        self.cooperate = True
+
+    def strategy(self, opponent: bool):
+        if not opponent:
+            self.cooperate = False
+        return self.cooperate
