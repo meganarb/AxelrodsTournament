@@ -5,7 +5,7 @@ def PlayerIter(rounds: int, players: Strategies):  # iterates through all combin
 
     for i in range(len(players) - 1):
         for j in range(i + 1, len(players)):
-            temp(rounds, players[i], players[j])
+            StrategyTest(rounds, players[i], players[j])
     return players  # other methods will have changed their scores
 
 
@@ -17,8 +17,9 @@ def StrategyTest(rounds: int, player1, player2):
     p2Choice: bool
 
     for i in range(rounds):
-        p1Choice = player1.strategy(past1)
-        p2Choice = player2.strategy(past2)
+        print(past1, past2)
+        p1Choice = player1.strategy(past2)
+        p2Choice = player2.strategy(past1)
 
         if p1Choice and p2Choice:
             player1.points += 3
@@ -43,8 +44,10 @@ def StrategyTest(rounds: int, player1, player2):
 p1 = Strategies.TitForTat("p1")
 p2 = Strategies.TitForTwoTats("p2")
 p3 = Strategies.Strategy("p3")
-Test(5, [p1, p2, p3])
+p4 = Strategies.AlwaysDefects("p4")
+PlayerIter(5, [p3, p4])
 
 print(p1.points)
 print(p2.points)
 print(p3.points)
+print(p4.points)
