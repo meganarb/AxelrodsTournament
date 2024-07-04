@@ -9,7 +9,7 @@ class Strategy:
         return True
 
 
-class TitForTat(Strategy):
+class TitForTat(Strategy):  # always cooperates, only defects after opponent defects
 
     def strategy(self, opponent: bool):
         if opponent:
@@ -17,7 +17,7 @@ class TitForTat(Strategy):
         return False
 
 
-class TitForTwoTats(Strategy):
+class TitForTwoTats(Strategy):  # always cooperates, only defects after opponent defects twice in a row
 
     def __init__(self, name):
         Strategy.__init__(self, name)
@@ -34,7 +34,7 @@ class TitForTwoTats(Strategy):
             return True
 
 
-class AlwaysDefects(Strategy):
+class AlwaysDefects(Strategy):  # aptly named
 
     def strategy(self, opponent: bool):
         return False
