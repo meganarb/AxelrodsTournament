@@ -4,14 +4,14 @@ class Strategy:
         self.name = name
         self.points = 0
 
-    # will be changed for each child class of strategy
-    def strategy(self, opponent:bool):
+    # will be changed for each child class of strategy, the base class always cooperates
+    def strategy(self, opponent: bool):
         return True
 
 
 class TitForTat(Strategy):
 
-    def strategy(self, opponent:bool):
+    def strategy(self, opponent: bool):
         if opponent:
             return True
         return False
@@ -32,3 +32,10 @@ class TitForTwoTats(Strategy):
                 return False
             self.betray = True
             return True
+
+
+class AlwaysDefects(Strategy):
+
+    def strategy(self, opponent: bool):
+        return False
+
