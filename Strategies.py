@@ -50,3 +50,19 @@ class NoForgiveness(Strategy):  # always cooperates until opponent defects; then
         if not opponent:
             self.cooperate = False
         return self.cooperate
+
+
+class TwoTitsForTat(Strategy):  # always cooperates until opponent defects, and then defects twice
+
+    def __init__(self, name):
+        Strategy.__init__(self, name)
+        self.repeat = False
+
+    def strategy(self, opponent: bool):
+        if opponent:
+            if self.repeat:
+                self.repeat = False
+                return False
+            return True
+        self.repeat = True
+        return False
